@@ -11,6 +11,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext classPathXmlApplicationContext = new ClassPathXmlApplicationContext("application.xml");
-		classPathXmlApplicationContext.getBean("user");
+		User user = (User) classPathXmlApplicationContext.getBean("user");
+		System.out.println(user);
 	}
 }

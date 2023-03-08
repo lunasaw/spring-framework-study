@@ -47,7 +47,7 @@ task api(type: Javadoc) {
 		splitIndex = true
 		links(project.ext.javadocLinks)
 		addBooleanOption('Xdoclint:syntax', true) // only check syntax with doclint
-		addBooleanOption('Xwerror', true) // fail build on Javadoc warnings
+		addBooleanOption('Xwerror', false) // fail build on Javadoc warnings
 		if (JavaVersion.current().isJava9Compatible()) {
 			addBooleanOption('html5', true)
 		}

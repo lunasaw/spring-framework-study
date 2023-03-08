@@ -21,17 +21,15 @@ import java.lang.reflect.Method;
 import java.util.Objects;
 
 import kotlin.Unit;
+import kotlin.coroutines.Continuation;
+import kotlin.coroutines.CoroutineContext;
 import kotlin.jvm.JvmClassMappingKt;
 import kotlin.reflect.KClassifier;
 import kotlin.reflect.KFunction;
 import kotlin.reflect.full.KCallables;
 import kotlin.reflect.jvm.KCallablesJvm;
 import kotlin.reflect.jvm.ReflectJvmMapping;
-import kotlinx.coroutines.BuildersKt;
-import kotlinx.coroutines.CoroutineStart;
-import kotlinx.coroutines.Deferred;
-import kotlinx.coroutines.Dispatchers;
-import kotlinx.coroutines.GlobalScope;
+import kotlinx.coroutines.*;
 import kotlinx.coroutines.flow.Flow;
 import kotlinx.coroutines.reactor.MonoKt;
 import kotlinx.coroutines.reactor.ReactorFlowKt;
@@ -52,7 +50,7 @@ public abstract class CoroutinesUtils {
 	 * Convert a {@link Deferred} instance to a {@link Mono}.
 	 */
 	public static <T> Mono<T> deferredToMono(Deferred<T> source) {
-		return MonoKt.mono(Dispatchers.getUnconfined(),
+		return MonoKt.mono((CoroutineContext) Dispatchers.getUnconfined(),
 				(scope, continuation) -> source.await(continuation));
 	}
 
@@ -60,9 +58,12 @@ public abstract class CoroutinesUtils {
 	 * Convert a {@link Mono} instance to a {@link Deferred}.
 	 */
 	public static <T> Deferred<T> monoToDeferred(Mono<T> source) {
-		return BuildersKt.async(GlobalScope.INSTANCE, Dispatchers.getUnconfined(),
+		return BuildersKt.async(GlobalScope.INSTANCE,  (CoroutineContext) Dispatchers.getUnconfined(),
 				CoroutineStart.DEFAULT,
-				(scope, continuation) -> MonoKt.awaitSingleOrNull(source, continuation));
+				(scope, continuation) -> {
+					Continuation<? super T> continuation1 = (Continuation<? super T>) continuation;
+					return MonoKt.awaitSingleOrNull(source, continuation1);
+				});
 	}
 
 	/**
@@ -76,8 +77,13 @@ public abstract class CoroutinesUtils {
 			KCallablesJvm.setAccessible(function, true);
 		}
 		KClassifier classifier = function.getReturnType().getClassifier();
-		Mono<Object> mono = MonoKt.mono(Dispatchers.getUnconfined(), (scope, continuation) ->
-					KCallables.callSuspend(function, getSuspendedFunctionArgs(target, args), continuation))
+		CoroutineContext unconfined = (CoroutineContext) Dispatchers.getUnconfined();
+		Mono<Object> mono = MonoKt.mono(unconfined, (scope, continuation) -> {
+
+					KFunction function1 = function;
+
+					return KCallables.callSuspend(function1, getSuspendedFunctionArgs(target, args), continuation);
+				})
 				.filter(result -> !Objects.equals(result, Unit.INSTANCE))
 				.onErrorMap(InvocationTargetException.class, InvocationTargetException::getTargetException);
 		if (classifier != null && classifier.equals(JvmClassMappingKt.getKotlinClass(Flow.class))) {
