@@ -1,0 +1,13 @@
+plugins {
+    id 'java-library'
+}
+dependencies {
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
+    implementation(project(":spring-context"))
+    implementation(project(":spring-instrument"))
+}
+
+test {
+    useJUnitPlatform()
+}
+
