@@ -21,7 +21,8 @@ classes/
 /build
 buildSrc/build
 /spring-*/build
-/luna-*/build
+/luna-spring/out
+/luna-spring/build
 /spring-core/graalvm/build
 /spring-core/kotlin-coroutines/build
 /framework-bom/build
