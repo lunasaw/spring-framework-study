@@ -3,6 +3,8 @@ package org.springframework.luna.customloader;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 class MyClassLoader extends ClassLoader {
 
@@ -37,7 +39,7 @@ class MyClassLoader extends ClassLoader {
 		byte[] data = null;
 		int off = 0;
 		int length = 0;
-		try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(classPath))) {
+		try (BufferedInputStream bufferedInputStream = new BufferedInputStream(Files.newInputStream(Paths.get(classPath)))) {
 			data = new byte[bufferedInputStream.available()];
 			while ((length = bufferedInputStream.read(data, off, data.length - off)) > 0) {
 				off += length;

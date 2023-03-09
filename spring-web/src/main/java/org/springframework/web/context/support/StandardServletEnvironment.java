@@ -49,7 +49,7 @@ public class StandardServletEnvironment extends StandardEnvironment implements C
 	/** Servlet context init parameters property source name: {@value}. */
 	public static final String SERVLET_CONTEXT_PROPERTY_SOURCE_NAME = "servletContextInitParams";
 
-	/** Servlet config init parameters property source name: {@value}. */
+	/** Servlet config init parameters property source name: {@value}. Servlet 配置初始化参数属性源名称：“servletConfigInitParams”。 */
 	public static final String SERVLET_CONFIG_PROPERTY_SOURCE_NAME = "servletConfigInitParams";
 
 	/** JNDI property source name: {@value}. */
@@ -78,6 +78,7 @@ public class StandardServletEnvironment extends StandardEnvironment implements C
 
 
 	/**
+	 * 使用超类贡献的属性源以及适用于基于 servlet 的标准环境的属性源自定义属性源集：
 	 * Customize the set of property sources with those contributed by superclasses as
 	 * well as those appropriate for standard servlet-based environments:
 	 * <ul>

@@ -115,6 +115,7 @@ public class PropertyPlaceholderHelper {
 	}
 
 	/**
+	 * 用提供的返回值替换格式 {name} 的所有占位符
 	 * Replaces all placeholders of format {@code ${name}} with the value returned
 	 * from the supplied {@link PlaceholderResolver}.
 	 * @param value the value containing the placeholders to be replaced

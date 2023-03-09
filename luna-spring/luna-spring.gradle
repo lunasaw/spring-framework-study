@@ -6,7 +6,7 @@ dependencies {
     // https://mvnrepository.com/artifact/io.github.lunasaw/luna-common
     implementation group: 'io.github.lunasaw', name: 'luna-common', version: '2.3.4'
     implementation(project(":spring-context"))
-    implementation(project(":spring-instrument"))
+    implementation(project(":spring-core"))
 }
 
 test {
