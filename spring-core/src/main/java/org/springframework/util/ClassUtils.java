@@ -171,6 +171,10 @@ public abstract class ClassUtils {
 	}
 
 	/**
+	 * 返回要使用的默认 ClassLoader：通常是线程上下文 ClassLoader，如果可用；加载 ClassUtils 类的 ClassLoader 将用作回退。
+	 * <p>如果您打算在明显更喜欢非空 ClassLoader 引用的场景中使用线程上下文 ClassLoader，
+	 * 请调用此方法：例如，用于类路径资源加载（但不一定用于 {@code Class.forName}，它接受一个 {@code null} ClassLoader
+	 *
 	 * Return the default ClassLoader to use: typically the thread context
 	 * ClassLoader, if available; the ClassLoader that loaded the ClassUtils
 	 * class will be used as fallback.
@@ -188,25 +192,38 @@ public abstract class ClassUtils {
 	public static ClassLoader getDefaultClassLoader() {
 		ClassLoader cl = null;
 		try {
+			// 当前线程的类加载器
 			cl = Thread.currentThread().getContextClassLoader();
 		}
 		catch (Throwable ex) {
+			// 无法访问线程上下文 ClassLoader - 后退...
 			// Cannot access thread context ClassLoader - falling back...
 		}
 		if (cl == null) {
 			// No thread context class loader -> use class loader of this class.
+			// 拿不到当前线程的类加载器，取 ClassUtils.class的类加载器
 			cl = ClassUtils.class.getClassLoader();
 			if (cl == null) {
 				// getClassLoader() returning null indicates the bootstrap ClassLoader
 				try {
+					// 系统类加载器 AppClassLoader
 					cl = ClassLoader.getSystemClassLoader();
 				}
 				catch (Throwable ex) {
 					// Cannot access system ClassLoader - oh well, maybe the caller can live with null...
+					// 无法访问系统 ClassLoader - 哦，好吧，也许调用者可以接受 null ...
 				}
 			}
 		}
 		return cl;
+	}
+
+
+	public static void main(String[] args) throws InterruptedException, ClassNotFoundException {
+		System.out.println(ClassLoader.getSystemClassLoader().getParent().loadClass(""));
+		long t1 = System.nanoTime();
+		Thread.sleep(4);
+		System.out.println(System.nanoTime() - t1 >= 5 * 1000000);
 	}
 
 	/**
