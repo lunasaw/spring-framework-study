@@ -971,6 +971,7 @@ public abstract class ClassUtils {
 	}
 
 	/**
+	 * 获取没有限定包名的类名。
 	 * Get the class name without the qualified package name.
 	 * @param className the className to get the short name for
 	 * @return the class name of the class without the package name

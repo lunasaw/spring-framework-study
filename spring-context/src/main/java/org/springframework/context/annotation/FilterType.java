@@ -32,30 +32,36 @@ package org.springframework.context.annotation;
 public enum FilterType {
 
 	/**
+	 * 过滤标有给定注释的候选人。
 	 * Filter candidates marked with a given annotation.
 	 * @see org.springframework.core.type.filter.AnnotationTypeFilter
 	 */
 	ANNOTATION,
 
 	/**
+	 * 筛选可分配给给定类型的候选人
 	 * Filter candidates assignable to a given type.
 	 * @see org.springframework.core.type.filter.AssignableTypeFilter
 	 */
 	ASSIGNABLE_TYPE,
 
 	/**
+	 * 筛选匹配给定 AspectJ 类型模式表达式的候选者。
 	 * Filter candidates matching a given AspectJ type pattern expression.
 	 * @see org.springframework.core.type.filter.AspectJTypeFilter
 	 */
 	ASPECTJ,
 
 	/**
+	 * 正则
 	 * Filter candidates matching a given regex pattern.
 	 * @see org.springframework.core.type.filter.RegexPatternTypeFilter
 	 */
 	REGEX,
 
-	/** Filter candidates using a given custom
+	/**
+	 * 自定义 Filter
+	 * Filter candidates using a given custom
 	 * {@link org.springframework.core.type.filter.TypeFilter} implementation.
 	 */
 	CUSTOM

@@ -82,6 +82,8 @@ public @interface ComponentScan {
 	 * to scan for annotated components. The package of each class specified will be scanned.
 	 * <p>Consider creating a special no-op marker class or interface in each package
 	 * that serves no purpose other than being referenced by this attribute.
+	 * basePackages的类型安全替代品，用于指定包以扫描带注释的组件。将扫描指定的每个类的包。
+	 * 考虑在每个包中创建一个特殊的无操作标记类或接口，除了被该属性引用之外没有任何用途。
 	 */
 	Class<?>[] basePackageClasses() default {};
 
@@ -96,11 +98,13 @@ public @interface ComponentScan {
 	 * @see AnnotationConfigApplicationContext#setBeanNameGenerator(BeanNameGenerator)
 	 * @see AnnotationBeanNameGenerator
 	 * @see FullyQualifiedAnnotationBeanNameGenerator
+	 * Bean name 生成器
 	 */
 	Class<? extends BeanNameGenerator> nameGenerator() default BeanNameGenerator.class;
 
 	/**
 	 * The {@link ScopeMetadataResolver} to be used for resolving the scope of detected components.
+	 * 用来指定解析@Scope注解的解析器
 	 */
 	Class<? extends ScopeMetadataResolver> scopeResolver() default AnnotationScopeMetadataResolver.class;
 
@@ -111,6 +115,7 @@ public @interface ComponentScan {
 	 * execute the actual scan.
 	 * <p>Note that setting this attribute overrides any value set for {@link #scopeResolver}.
 	 * @see ClassPathBeanDefinitionScanner#setScopedProxyMode(ScopedProxyMode)
+	 *
 	 */
 	ScopedProxyMode scopedProxy() default ScopedProxyMode.DEFAULT;
 
@@ -118,12 +123,14 @@ public @interface ComponentScan {
 	 * Controls the class files eligible for component detection.
 	 * <p>Consider use of {@link #includeFilters} and {@link #excludeFilters}
 	 * for a more flexible approach.
+	 *  配置类的扫描路径，为一个匹配符，匹配特定路径，例如：<p>"**\/*.class"</>
 	 */
 	String resourcePattern() default ClassPathScanningCandidateComponentProvider.DEFAULT_RESOURCE_PATTERN;
 
 	/**
 	 * Indicates whether automatic detection of classes annotated with {@code @Component}
 	 * {@code @Repository}, {@code @Service}, or {@code @Controller} should be enabled.
+	 * 指定是否启用对@Controller,@Service,@Repository,@Component注解的类的自动检测
 	 */
 	boolean useDefaultFilters() default true;
 
@@ -136,6 +143,7 @@ public @interface ComponentScan {
 	 * even if it does not match the default filters (i.e. is not annotated with {@code @Component}).
 	 * @see #resourcePattern()
 	 * @see #useDefaultFilters()
+	 *  对扫描的包或者类进行过滤，如果满足条件，不论组件类上是不是有注解，Bean都会被创建
 	 */
 	Filter[] includeFilters() default {};
 
@@ -148,6 +156,7 @@ public @interface ComponentScan {
 	/**
 	 * Specify whether scanned beans should be registered for lazy initialization.
 	 * <p>Default is {@code false}; switch this to {@code true} when desired.
+	 * 指定是否应为延迟初始化注册扫描的 bean。默认为假；需要时将其切换为 true。
 	 * @since 4.1
 	 */
 	boolean lazyInit() default false;
@@ -216,6 +225,8 @@ public @interface ComponentScan {
 		 * this is an AspectJ type pattern expression. If {@link #type} is
 		 * set to {@link FilterType#REGEX REGEX}, this is a regex pattern
 		 * for the fully-qualified class names to match.
+		 * 用于过滤器的模式（或模式），作为指定 Class 值的替代方法。
+		 * 如果类型设置为 ASPECTJ，这是一个 AspectJ 类型模式表达式。如果 type 设置为 REGEX，则这是用于匹配完全限定类名的正则表达式模式。
 		 * @see #type
 		 * @see #classes
 		 */

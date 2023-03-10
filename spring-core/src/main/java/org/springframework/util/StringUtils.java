@@ -165,6 +165,7 @@ public abstract class StringUtils {
 	 * @param str the {@code String} to check (may be {@code null})
 	 * @return {@code true} if the {@code String} is not {@code null}, its
 	 * length is greater than 0, and it does not contain whitespace only
+	 * 检查给定的字符串是否包含实际文本。更具体地说，如果 String 不为 null，其长度大于 0，并且至少包含一个非空白字符，则此方法返回 true。
 	 * @see #hasText(CharSequence)
 	 * @see #hasLength(String)
 	 * @see Character#isWhitespace

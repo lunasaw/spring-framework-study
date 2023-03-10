@@ -163,6 +163,9 @@ public class AnnotationBeanNameGenerator implements BeanNameGenerator {
 	 * name may be an issue if you are autowiring by name.
 	 * @param definition the bean definition to build a bean name for
 	 * @return the default bean name (never {@code null})
+	 * 从给定的 bean 定义派生默认的 bean 名称。 <p>默认实现只是构建短类名的去大写版本：例如“mypackage.MyJdbcDao”→“myJdbcDao”。
+	 * <p>请注意，内部类因此将具有“outerClassName.InnerClassName”形式的名称，如果您按名称自动装配，由于名称中的句点可能会出现问题。
+	 * @param definition 用于为@return 默认bean 名称构建bean 名称的bean 定义（从不{@code null}）
 	 */
 	protected String buildDefaultBeanName(BeanDefinition definition) {
 		String beanClassName = definition.getBeanClassName();
