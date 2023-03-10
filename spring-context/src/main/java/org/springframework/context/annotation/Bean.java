@@ -225,7 +225,7 @@ public @interface Bean {
 	 * @since 4.3.3
 	 * @see #name
 	 */
-	@AliasFor("name")
+	@AliasFor("name") // 互为别名
 	String[] value() default {};
 
 	/**
@@ -241,11 +241,14 @@ public @interface Bean {
 
 	/**
 	 * Are dependencies to be injected via convention-based autowiring by name or type?
+	 * 是否要通过基于约定的自动装配按名称或类型注入依赖项？
 	 * <p>Note that this autowire mode is just about externally driven autowiring based
 	 * on bean property setter methods by convention, analogous to XML bean definitions.
+	 * 请注意，这种自动装配模式只是按照惯例基于 bean 属性设置器方法的外部驱动自动装配，类似于 XML bean 定义。
 	 * <p>The default mode does allow for annotation-driven autowiring. "no" refers to
 	 * externally driven autowiring only, not affecting any autowiring demands that the
 	 * bean class itself expresses through annotations.
+	 * 默认模式确实允许注解驱动的自动装配。 “no”仅指外部驱动的自动装配，不影响 bean 类本身通过注释表达的任何自动装配要求。
 	 * @see Autowire#BY_NAME
 	 * @see Autowire#BY_TYPE
 	 * @deprecated as of 5.1, since {@code @Bean} factory method argument resolution and
@@ -258,6 +261,7 @@ public @interface Bean {
 	 * Is this bean a candidate for getting autowired into some other bean?
 	 * <p>Default is {@code true}; set this to {@code false} for internal delegates
 	 * that are not meant to get in the way of beans of the same type in other places.
+	 * 这个 bean 是自动装配到其他 bean 的候选者吗？默认为真；对于不打算在其他地方妨碍相同类型的 bean 的内部委托，将此设置为 false。
 	 * @since 5.1
 	 */
 	boolean autowireCandidate() default true;
@@ -275,6 +279,8 @@ public @interface Bean {
 	/**
 	 * The optional name of a method to call on the bean instance upon closing the
 	 * application context, for example a {@code close()} method on a JDBC
+	 * 在关闭应用程序上下文时调用 bean 实例的方法的可选名称，例如 JDBC DataSource 实现上的 close() 方法，或 Hibernate SessionFactory 对象。
+	 * 该方法必须没有参数，但可以抛出任何异常。
 	 * {@code DataSource} implementation, or a Hibernate {@code SessionFactory} object.
 	 * The method must have no arguments but may throw any exception.
 	 * <p>As a convenience to the user, the container will attempt to infer a destroy

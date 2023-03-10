@@ -82,6 +82,9 @@ import org.springframework.util.ClassUtils;
  * their corresponding bean definitions registered before any other
  * {@code BeanFactoryPostProcessor} executes.
  *
+ * 这个后处理器是按优先级排序的，因为在 @Configuration 类中声明的任何 @Bean 方法在任何其他
+ * BeanFactoryPostProcessor 执行之前都注册了相应的 bean 定义，这一点很重要。
+ *
  * @author Chris Beams
  * @author Juergen Hoeller
  * @author Phillip Webb

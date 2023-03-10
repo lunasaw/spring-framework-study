@@ -185,12 +185,15 @@ public @interface AliasFor {
 	 * <p>Intended to be used instead of {@link #attribute} when {@link #annotation}
 	 * is not declared &mdash; for example: {@code @AliasFor("value")} instead of
 	 * {@code @AliasFor(attribute = "value")}.
+	 * attribute的别名。
+	 * 在未annotation注解时用于代替attribute ——例如： @AliasFor("value")而不是@AliasFor(attribute = "value") 。
 	 */
 	@AliasFor("attribute")
 	String value() default "";
 
 	/**
 	 * The name of the attribute that <em>this</em> attribute is an alias for.
+	 * 此属性是其别名的属性的名称。
 	 * @see #value
 	 */
 	@AliasFor("value")

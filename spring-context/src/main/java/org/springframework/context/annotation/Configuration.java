@@ -31,7 +31,7 @@ import org.springframework.stereotype.Component;
  * Indicates that a class declares one or more {@link Bean @Bean} methods and
  * may be processed by the Spring container to generate bean definitions and
  * service requests for those beans at runtime, for example:
- *
+ * 指示一个类声明一个或多个 {@link Bean @Bean} 方法，并且可以由 Spring 容器处理以在运行时为这些 bean 生成 bean 定义和服务请求，例如：
  * <pre class="code">
  * &#064;Configuration
  * public class AppConfig {
@@ -46,10 +46,10 @@ import org.springframework.stereotype.Component;
  *
  * <h3>Via {@code AnnotationConfigApplicationContext}</h3>
  *
- * <p>{@code @Configuration} classes are typically bootstrapped using either
- * {@link AnnotationConfigApplicationContext} or its web-capable variant,
+ * <p>{@code @Configuration} classes are typically bootstrapped using either 通常使用
+ * {@link AnnotationConfigApplicationContext} or its web-capable variant, 或其具有网络功能的变体
  * {@link org.springframework.web.context.support.AnnotationConfigWebApplicationContext
- * AnnotationConfigWebApplicationContext}. A simple example with the former follows:
+ * AnnotationConfigWebApplicationContext}. A simple example with the former follows: 前者的一个简单示例如下：
  *
  * <pre class="code">
  * AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
@@ -428,12 +428,14 @@ public @interface Configuration {
 	 * Explicitly specify the name of the Spring bean definition associated with the
 	 * {@code @Configuration} class. If left unspecified (the common case), a bean
 	 * name will be automatically generated.
+	 * 显式指定与 @Configuration 类关联的 Spring bean 定义的名称。如果未指定（常见情况），将自动生成一个 bean 名称
 	 * <p>The custom name applies only if the {@code @Configuration} class is picked
 	 * up via component scanning or supplied directly to an
 	 * {@link AnnotationConfigApplicationContext}. If the {@code @Configuration} class
 	 * is registered as a traditional XML bean definition, the name/id of the bean
 	 * element will take precedence.
 	 * @return the explicit component name, if any (or empty String otherwise)
+	 * 明确的组件名称，如果有的话（否则为空字符串）
 	 * @see AnnotationBeanNameGenerator
 	 */
 	@AliasFor(annotation = Component.class)
@@ -446,6 +448,8 @@ public @interface Configuration {
 	 * requires method interception, implemented through a runtime-generated CGLIB
 	 * subclass which comes with limitations such as the configuration class and
 	 * its methods not being allowed to declare {@code final}.
+	 * 指定是否应代理 @Bean 方法以强制执行 bean 生命周期行为，例如即使在用户代码中直接调用 @Bean 方法的情况下，也可以返回共享单例 bean 实例。
+	 * 此功能需要方法拦截，通过运行时生成的 CGLIB 子类实现，该子类具有配置类及其方法不允许声明为 final 等限制。
 	 * <p>The default is {@code true}, allowing for 'inter-bean references' via direct
 	 * method calls within the configuration class as well as for external calls to
 	 * this configuration's {@code @Bean} methods, e.g. from another configuration class.

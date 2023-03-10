@@ -17,4 +17,12 @@ public class User {
 		System.out.println("this.is:" + name);
 		this.name = name;
 	}
+
+	public User(String name) {
+		this.name = name;
+	}
+
+	public User() {
+		System.out.println("constructor");
+	}
 }
