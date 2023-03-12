@@ -87,6 +87,7 @@ public @interface Scope {
 	/**
 	 * Specifies whether a component should be configured as a scoped proxy
 	 * and if so, whether the proxy should be interface-based or subclass-based.
+	 * 指定组件是否应配置为作用域代理，如果是，代理应基于接口还是基于子类。
 	 * <p>Defaults to {@link ScopedProxyMode#DEFAULT}, which typically indicates
 	 * that no scoped proxy should be created unless a different default
 	 * has been configured at the component-scan instruction level.

@@ -1,10 +1,7 @@
 package org.springframework.luna.config;
 
 import com.luna.common.anno.MyValid;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.*;
 import org.springframework.core.type.filter.AspectJTypeFilter;
 import org.springframework.luna.componentscan.LunaTypeFilter;
 import org.springframework.luna.domain.Address;
@@ -24,6 +21,7 @@ import org.springframework.stereotype.Component;
 public class CustomConfig {
 
 	@Bean(initMethod = "init")
+	@Scope
 	public Address address() {
 		return new Address();
 	}

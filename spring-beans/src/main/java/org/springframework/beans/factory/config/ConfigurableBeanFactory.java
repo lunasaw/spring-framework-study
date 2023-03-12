@@ -55,6 +55,7 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	 * Scope identifier for the standard singleton scope: {@value}.
 	 * <p>Custom scopes can be added via {@code registerScope}.
 	 * @see #registerScope
+	 * 单例
 	 */
 	String SCOPE_SINGLETON = "singleton";
 
@@ -62,6 +63,7 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	 * Scope identifier for the standard prototype scope: {@value}.
 	 * <p>Custom scopes can be added via {@code registerScope}.
 	 * @see #registerScope
+	 * 原型
 	 */
 	String SCOPE_PROTOTYPE = "prototype";
 
@@ -74,6 +76,7 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	 * @throws IllegalStateException if this factory is already associated with
 	 * a parent BeanFactory
 	 * @see #getParentBeanFactory()
+	 * 父工厂
 	 */
 	void setParentBeanFactory(BeanFactory parentBeanFactory) throws IllegalStateException;
 
@@ -84,6 +87,9 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	 * that do not carry a resolved bean class yet. This is the case as of
 	 * Spring 2.0 by default: Bean definitions only carry bean class names,
 	 * to be resolved once the factory processes the bean definition.
+	 * 设置类加载器以用于加载 bean 类。默认是线程上下文类加载器。
+	 * 请注意，此类加载器将仅适用于尚未携带已解析的 bean 类的 bean 定义。
+	 * 这是 Spring 2.0 默认情况下的情况：Bean 定义只带有 bean 类名，一旦工厂处理了 bean 定义就会被解析。
 	 * @param beanClassLoader the class loader to use,
 	 * or {@code null} to suggest the default class loader
 	 */
@@ -104,6 +110,8 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	 * <i>load-time weaving</i> is involved, to make sure that actual bean
 	 * classes are loaded as lazily as possible. The temporary loader is
 	 * then removed once the BeanFactory completes its bootstrap phase.
+	 * 指定一个临时类加载器以用于类型匹配目的。默认为无，只需使用标准 bean ClassLoader。
+	 * 如果涉及加载时编织，通常只指定一个临时类加载器，以确保尽可能延迟加载实际的 bean 类。一旦 BeanFactory 完成其引导阶段，临时加载程序就会被删除。
 	 * @since 2.5
 	 */
 	void setTempClassLoader(@Nullable ClassLoader tempClassLoader);
