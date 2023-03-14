@@ -46,7 +46,9 @@ import org.springframework.util.StringUtils;
  * NIO.2 API for read/write interactions. As of 5.1, it may be constructed with a
  * {@link java.nio.file.Path} handle in which case it will perform all file system
  * interactions via NIO.2, only resorting to {@link File} on {@link #getFile()}.
- *
+ * java.io.File和java.nio.file.Path的Resource实现处理文件系统目标。支持解析为File和URL 。实现扩展的WritableResource接口。
+ * 注意：从 Spring Framework 5.0 开始，此Resource实现使用 NIO.2 API 进行读/写交互。从 5.1 开始，
+ * 它可以用Path句柄构造，在这种情况下，它将通过 NIO.2 执行所有文件系统交互，仅求助于getFile()上的File 。
  * @author Juergen Hoeller
  * @since 28.12.2003
  * @see #FileSystemResource(String)

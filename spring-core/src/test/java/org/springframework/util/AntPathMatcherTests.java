@@ -628,6 +628,7 @@ class AntPathMatcherTests {
 			pathMatcher.match("test" + i, "test");
 		}
 		// Cache turned off because it went beyond the threshold
+		// 缓存关闭，因为它超出了阈值
 		assertThat(pathMatcher.stringMatcherCache.isEmpty()).isTrue();
 	}
 

@@ -43,6 +43,8 @@ public interface BeanDefinitionReader {
 	 * Return the bean factory to register the bean definitions with.
 	 * <p>The factory is exposed through the {@link BeanDefinitionRegistry} interface,
 	 * encapsulating the methods that are relevant for bean definition handling.
+	 * 返回 bean 工厂以注册 bean 定义。
+	 * 工厂通过BeanDefinitionRegistry接口公开，封装了与 bean 定义处理相关的方法。
 	 */
 	BeanDefinitionRegistry getRegistry();
 
@@ -60,6 +62,11 @@ public interface BeanDefinitionReader {
 	 * <p>There is also a {@code loadBeanDefinitions(String)} method available,
 	 * for loading bean definitions from a resource location (or location pattern).
 	 * This is a convenience to avoid explicit {@code ResourceLoader} handling.
+	 * 返回ResourceLoader以用于资源位置。
+	 * 可以检查ResourcePatternResolver接口并进行相应的转换，以便为给定的资源模式加载多个资源。
+	 * null返回值表明绝对资源加载对于这个 bean 定义读取器不可用。
+	 * 这主要用于从 bean 定义资源中导入更多资源，例如通过 XML bean 定义中的“import”标签。但是，建议相对于定义资源应用此类导入；只有明确的完整资源位置才会触发基于绝对路径的资源加载。
+	 * 还有一个loadBeanDefinitions(String)方法可用，用于从资源位置（或位置模式）加载 bean 定义。这是为了避免显式ResourceLoader处理的便利。
 	 * @see #loadBeanDefinitions(String)
 	 * @see org.springframework.core.io.support.ResourcePatternResolver
 	 */
@@ -71,6 +78,8 @@ public interface BeanDefinitionReader {
 	 * <p>{@code null} suggests to not load bean classes eagerly
 	 * but rather to just register bean definitions with class names,
 	 * with the corresponding classes to be resolved later (or never).
+	 * 返回用于 bean 类的类加载器。
+	 * null建议不要急切地加载 bean 类，而只是用类名注册 bean 定义，稍后（或从不）解析相应的类
 	 */
 	@Nullable
 	ClassLoader getBeanClassLoader();
@@ -78,6 +87,8 @@ public interface BeanDefinitionReader {
 	/**
 	 * Return the {@link BeanNameGenerator} to use for anonymous beans
 	 * (without explicit bean name specified).
+	 * 返回BeanNameGenerator以用于匿名 bean（没有指定明确的 bean 名称）。
+	 *
 	 */
 	BeanNameGenerator getBeanNameGenerator();
 

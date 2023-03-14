@@ -212,6 +212,10 @@ public abstract class AbstractBeanDefinitionReader implements BeanDefinitionRead
 	 * @param actualResources a Set to be filled with the actual Resource objects
 	 * that have been resolved during the loading process. May be {@code null}
 	 * to indicate that the caller is not interested in those Resource objects.
+	 * 从指定的资源位置加载 bean 定义。
+	 * 该位置也可以是位置模式，前提是此 bean 定义读取器的 ResourceLoader 是 ResourcePatternResolver。
+	 * 参数：
+	 * location – 资源位置，将使用此 bean 定义读取器的 ResourceLoader（或 ResourcePatternResolver）加载 actualResources – 一个 Set 将填充加载过程中已解析的实际 Resource 对象。可以为null以指示调用者对那些 Resource 对象不感兴趣。
 	 * @return the number of bean definitions found
 	 * @throws BeanDefinitionStoreException in case of loading or parsing errors
 	 * @see #getResourceLoader()

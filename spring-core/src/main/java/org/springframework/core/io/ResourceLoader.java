@@ -46,6 +46,12 @@ public interface ResourceLoader {
 
 
 	/**
+	 * 返回指定资源位置的Resource句柄。
+	 * 句柄应始终是可重用的资源描述符，允许多次Resource.getInputStream()调用。
+	 *
+	 * 必须支持完全限定的 URL，例如“file:C:/test.dat”。
+	 * 必须支持类路径伪 URL，例如“classpath:test.dat”。
+	 * 应支持相对文件路径，例如“WEB-INF/test.dat”。 （这将是特定于实现的，通常由 ApplicationContext 实现提供。）
 	 * Return a {@code Resource} handle for the specified resource location.
 	 * <p>The handle should always be a reusable resource descriptor,
 	 * allowing for multiple {@link Resource#getInputStream()} calls.
@@ -71,6 +77,8 @@ public interface ResourceLoader {
 	 * <p>Clients which need to access the {@code ClassLoader} directly can do so
 	 * in a uniform manner with the {@code ResourceLoader}, rather than relying
 	 * on the thread context {@code ClassLoader}.
+	 * 公开此ResourceLoader使用的ClassLoader 。
+	 * 需要直接访问ClassLoader客户端可以使用ResourceLoader以统一的方式进行访问，而不是依赖于线程上下文ClassLoader
 	 * @return the {@code ClassLoader}
 	 * (only {@code null} if even the system {@code ClassLoader} isn't accessible)
 	 * @see org.springframework.util.ClassUtils#getDefaultClassLoader()

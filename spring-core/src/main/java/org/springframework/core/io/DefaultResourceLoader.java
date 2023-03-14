@@ -154,9 +154,11 @@ public class DefaultResourceLoader implements ResourceLoader {
 		}
 
 		if (location.startsWith("/")) {
+			// 跟路径
 			return getResourceByPath(location);
 		}
 		else if (location.startsWith(CLASSPATH_URL_PREFIX)) {
+			// 类路径
 			return new ClassPathResource(location.substring(CLASSPATH_URL_PREFIX.length()), getClassLoader());
 		}
 		else {
@@ -167,6 +169,7 @@ public class DefaultResourceLoader implements ResourceLoader {
 			}
 			catch (MalformedURLException ex) {
 				// No URL -> resolve as resource path.
+				// 相对路径
 				return getResourceByPath(location);
 			}
 		}
@@ -176,6 +179,8 @@ public class DefaultResourceLoader implements ResourceLoader {
 	 * Return a Resource handle for the resource at the given path.
 	 * <p>The default implementation supports class path locations. This should
 	 * be appropriate for standalone implementations but can be overridden,
+	 * 返回给定路径上资源的资源句柄。
+	 * 默认实现支持类路径位置。这应该适用于独立实现，但可以被覆盖，例如，对于针对 Servlet 容器的实现
 	 * e.g. for implementations targeted at a Servlet container.
 	 * @param path the path to the resource
 	 * @return the corresponding Resource handle
@@ -195,6 +200,7 @@ public class DefaultResourceLoader implements ResourceLoader {
 	protected static class ClassPathContextResource extends ClassPathResource implements ContextResource {
 
 		public ClassPathContextResource(String path, @Nullable ClassLoader classLoader) {
+			// ClassPathResource 父类构造器
 			super(path, classLoader);
 		}
 

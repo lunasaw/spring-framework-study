@@ -6,12 +6,12 @@ import java.io.FileInputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-class MyClassLoader extends ClassLoader {
+public class MyClassLoader extends ClassLoader {
 
 	private final String path;
 
 
-	MyClassLoader(String path) {
+	public MyClassLoader(String path) {
 		this.path = path;
 	}
 

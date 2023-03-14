@@ -76,6 +76,7 @@ public class AntPathMatcher implements PathMatcher {
 	/** Default path separator: "/". */
 	public static final String DEFAULT_PATH_SEPARATOR = "/";
 
+	// 缓存关闭阈值
 	private static final int CACHE_TURNOFF_THRESHOLD = 65536;
 
 	private static final Pattern VARIABLE_PATTERN = Pattern.compile("\\{[^/]+?\\}");
@@ -131,6 +132,8 @@ public class AntPathMatcher implements PathMatcher {
 	/**
 	 * Specify whether to perform pattern matching in a case-sensitive fashion.
 	 * <p>Default is {@code true}. Switch this to {@code false} for case-insensitive matching.
+	 * 指定是否以区分大小写的方式执行模式匹配。
+	 * 默认为true 。将此设置为false以进行不区分大小写的匹配。
 	 * @since 4.2
 	 */
 	public void setCaseSensitive(boolean caseSensitive) {
