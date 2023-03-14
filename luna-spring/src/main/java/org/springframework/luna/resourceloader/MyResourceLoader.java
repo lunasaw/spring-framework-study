@@ -12,14 +12,13 @@ import org.springframework.util.ResourceUtils;
  */
 public class MyResourceLoader {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		String location = "application.xml";
+        String location = ResourceUtils.CLASSPATH_URL_PREFIX + "application.xml";
 
+        ResourceLoader resourceLoader = new DefaultResourceLoader();
 
-		ResourceLoader resourceLoader = new DefaultResourceLoader();
-
-		Resource resource = resourceLoader.getResource(location);
-		Assert.isTrue(resource.exists(), "file exists false");
-	}
+        Resource resource = resourceLoader.getResource(location);
+        Assert.isTrue(resource.exists(), "file exists false");
+    }
 }

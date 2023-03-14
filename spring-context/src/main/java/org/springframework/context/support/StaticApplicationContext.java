@@ -30,6 +30,7 @@ import org.springframework.lang.Nullable;
  * which supports programmatic registration of beans and messages,
  * rather than reading bean definitions from external configuration sources.
  * Mainly useful for testing.
+ * ApplicationContext实现支持 bean 和消息的编程注册，而不是从外部配置源读取 bean 定义。主要用于测试
  *
  * @author Rod Johnson
  * @author Juergen Hoeller
@@ -112,6 +113,8 @@ public class StaticApplicationContext extends GenericApplicationContext {
 	/**
 	 * Register a prototype bean with the underlying bean factory.
 	 * <p>For more advanced needs, register with the underlying BeanFactory directly.
+	 * 向底层 bean 工厂注册一个原型 bean。
+	 * 对于更高级的需求，直接向底层 BeanFactory 注册
 	 * @see #getDefaultListableBeanFactory
 	 */
 	public void registerPrototype(String name, Class<?> clazz) throws BeansException {

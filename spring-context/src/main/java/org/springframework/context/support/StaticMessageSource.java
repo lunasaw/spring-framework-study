@@ -28,7 +28,7 @@ import org.springframework.util.Assert;
  * Simple implementation of {@link org.springframework.context.MessageSource}
  * which allows messages to be registered programmatically.
  * This MessageSource supports basic internationalization.
- *
+ * org.springframework.context.MessageSource的简单实现，它允许以编程方式注册消息。此 MessageSource 支持基本的国际化。
  * <p>Intended for testing rather than for use in production systems.
  *
  * @author Rod Johnson

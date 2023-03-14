@@ -1,10 +1,16 @@
 package org.springframework.luna.config;
 
+import com.alibaba.fastjson2.JSON;
 import com.luna.common.anno.MyValid;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.annotation.*;
 import org.springframework.core.type.filter.AspectJTypeFilter;
 import org.springframework.luna.componentscan.LunaTypeFilter;
 import org.springframework.luna.domain.Address;
+import org.springframework.luna.postprocessor.MyBeanPostProcessor;
 import org.springframework.stereotype.Component;
 
 /**
@@ -24,5 +30,14 @@ public class CustomConfig {
 	@Scope
 	public Address address() {
 		return new Address();
+	}
+
+
+	@Bean
+	public BeanFactoryPostProcessor myBeanFactoryPostProcessor() {
+		return beanFactory -> {
+			BeanDefinition address = beanFactory.getBeanDefinition("address");
+			System.out.println(address);
+		};
 	}
 }
