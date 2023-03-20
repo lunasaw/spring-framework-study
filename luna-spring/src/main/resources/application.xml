@@ -10,5 +10,6 @@
 	<bean class="org.springframework.luna.domain.xml.Phone" name="phone">
 		<property name="number" value="luna's phone"/>
 	</bean>
-	<context:component-scan base-package="org.springframework.luna.domain.xml"/>
+	<context:component-scan base-package="org.springframework.luna.domain.xml" name-generator="org.springframework.luna.componentscan.MyCustomBeanNameGenerator"/>
+
 </beans>

@@ -1,4 +1,4 @@
-package org.springframework.luna.config;
+package org.springframework.luna.annoconfig;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.luna.domain.Address;

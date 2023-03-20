@@ -149,6 +149,8 @@ public class MutablePropertyValues implements PropertyValues, Serializable {
 	}
 
 	/**
+	 * 添加给定 Map 中的所有属性值。
+	 * 参数：other – 一个 Map，其属性值以属性名称为键，必须是一个字符串
 	 * Add all property values from the given Map.
 	 * @param other a Map with property values keyed by property name,
 	 * which must be a String

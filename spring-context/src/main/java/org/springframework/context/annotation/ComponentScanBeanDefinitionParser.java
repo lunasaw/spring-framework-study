@@ -46,7 +46,7 @@ import org.springframework.util.StringUtils;
 
 /**
  * Parser for the {@code <context:component-scan/>} element.
- *
+ *  <context:component-scan/>
  * @author Mark Fisher
  * @author Ramnivas Laddad
  * @author Juergen Hoeller
@@ -54,6 +54,7 @@ import org.springframework.util.StringUtils;
  */
 public class ComponentScanBeanDefinitionParser implements BeanDefinitionParser {
 
+	// 基础包路径
 	private static final String BASE_PACKAGE_ATTRIBUTE = "base-package";
 
 	private static final String RESOURCE_PATTERN_ATTRIBUTE = "resource-pattern";
@@ -86,6 +87,7 @@ public class ComponentScanBeanDefinitionParser implements BeanDefinitionParser {
 				ConfigurableApplicationContext.CONFIG_LOCATION_DELIMITERS);
 
 		// Actually scan for bean definitions and register them.
+		// 实际上扫描 bean 定义并注册它们。
 		ClassPathBeanDefinitionScanner scanner = configureScanner(parserContext, element);
 		Set<BeanDefinitionHolder> beanDefinitions = scanner.doScan(basePackages);
 		registerComponents(parserContext.getReaderContext(), beanDefinitions, element);

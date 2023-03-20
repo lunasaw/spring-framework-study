@@ -1,17 +1,12 @@
-package org.springframework.luna.config;
+package org.springframework.luna.annoconfig;
 
-import com.alibaba.fastjson2.JSON;
 import com.luna.common.anno.MyValid;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.annotation.*;
-import org.springframework.core.type.filter.AspectJTypeFilter;
 import org.springframework.luna.componentscan.LunaTypeFilter;
+import org.springframework.luna.componentscan.MyCustomBeanNameGenerator;
 import org.springframework.luna.domain.Address;
-import org.springframework.luna.postprocessor.MyBeanPostProcessor;
-import org.springframework.stereotype.Component;
 
 /**
  * @author chenzhangyue
@@ -22,7 +17,7 @@ import org.springframework.stereotype.Component;
 		// 过滤指定注解 所有条件取交集
 		excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {MyValid.class})},
 		includeFilters = {@ComponentScan.Filter(type = FilterType.ASPECTJ, pattern = "org.springframework.luna.domain.**"),
-				@ComponentScan.Filter(type = FilterType.CUSTOM, classes = LunaTypeFilter.class)}, lazyInit = true
+				@ComponentScan.Filter(type = FilterType.CUSTOM, classes = LunaTypeFilter.class)}, lazyInit = true, nameGenerator = MyCustomBeanNameGenerator.class
 )
 public class CustomConfig {
 

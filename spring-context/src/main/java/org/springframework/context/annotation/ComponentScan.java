@@ -63,6 +63,7 @@ public @interface ComponentScan {
 	 * <p>Allows for more concise annotation declarations if no other attributes
 	 * are needed &mdash; for example, {@code @ComponentScan("org.my.pkg")}
 	 * instead of {@code @ComponentScan(basePackages = "org.my.pkg")}.
+	 * 如果不需要其他属性，则允许更简洁的注解声明——例如， @ComponentScan("org.my.pkg")而不是@ComponentScan(basePackages = "org.my.pkg") 。
 	 */
 	@AliasFor("basePackages")
 	String[] value() default {};
@@ -99,6 +100,8 @@ public @interface ComponentScan {
 	 * @see AnnotationBeanNameGenerator
 	 * @see FullyQualifiedAnnotationBeanNameGenerator
 	 * Bean name 生成器
+	 * BeanNameGenerator类用于命名 Spring 容器中检测到的组件。
+	 * BeanNameGenerator接口本身的默认值指示用于处理此@ComponentScan注释的扫描器应该使用其继承的 bean 名称生成器，例如默认的AnnotationBeanNameGenerator或在引导时提供给应用程序上下文的任何自定义实例
 	 */
 	Class<? extends BeanNameGenerator> nameGenerator() default BeanNameGenerator.class;
 
