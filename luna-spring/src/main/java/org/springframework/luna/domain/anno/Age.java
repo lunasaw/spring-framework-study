@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 @Data
 public class Age {
 
+
 	private Integer number;
 
 	public Age() {

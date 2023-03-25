@@ -3,13 +3,38 @@
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--	<bean class="org.springframework.luna.domain.xml.User" id="user">-->
-<!--		<property name="name" value="lihua"/>-->
-<!--	</bean>-->
-
-	<bean class="org.springframework.luna.domain.xml.Phone" name="phone">
-		<property name="number" value="luna's phone"/>
+	<bean id="yamlProperties" class="org.springframework.beans.factory.config.YamlPropertiesFactoryBean">
+		<property name="resources" value="classpath:application.yml"/>
 	</bean>
-	<context:component-scan base-package="org.springframework.luna.domain.xml" name-generator="org.springframework.luna.componentscan.MyCustomBeanNameGenerator"/>
+
+	<bean id="configurerSupport" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+
+	</bean>
+
+	<!--装载配置文件-->
+<!--	<context:property-placeholder location="classpath:application.properties"/>-->
+<!--	<context:property-placeholder properties-ref="yamlProperties" local-override="true"/>-->
+	<bean class="org.springframework.beans.factory.config.PropertyOverrideConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:application.properties</value>
+			</list>
+		</property>
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="ignoreInvalidKeys" value="true"/>
+	</bean>
+	<bean class="org.springframework.luna.domain.xml.User" id="user" name="custom_luna_user">
+		<property name="name" value="${luna.user.name}"/>
+	</bean>
+
+	<bean class="org.springframework.luna.domain.xml.Phone" name="phone" init-method="init" destroy-method="destroy">
+		<property name="number" value="15696766666"/>
+	</bean>
+
+	<bean class="org.springframework.luna.domain.xml.UserFactoryBean" id="userFactoryBean"/>
+
+	<!--包扫描-->
+	<context:component-scan base-package="org.springframework.luna.domain.xml"
+							name-generator="org.springframework.luna.componentscan.MyCustomBeanNameGenerator"/>
 
 </beans>

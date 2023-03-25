@@ -395,6 +395,7 @@ public abstract class YamlProcessor {
 
 		/**
 		 * The matcher should not be considered.
+		 * 不应考虑匹配器。
 		 */
 		ABSTAIN;
 
@@ -419,6 +420,7 @@ public abstract class YamlProcessor {
 
 		/**
 		 * Replace values from earlier in the list, ignoring any failures.
+		 * 替换列表前面的值，忽略任何失败
 		 */
 		OVERRIDE_AND_IGNORE,
 

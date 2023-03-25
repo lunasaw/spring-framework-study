@@ -24,7 +24,7 @@ import org.springframework.lang.Nullable;
 /**
  * The default implementation for {@link PropertySourceFactory},
  * wrapping every resource in a {@link ResourcePropertySource}.
- *
+ *	默认资源文件解析器
  * @author Juergen Hoeller
  * @since 4.3
  * @see PropertySourceFactory

@@ -16,7 +16,11 @@ public class UserFactoryBean implements FactoryBean {
 
 	@Override
 	public Object getObject() throws Exception {
-		return new User(phone, "factory bean name");
+		System.out.println("-------调用工厂Bean获取bean");
+		User user = new User();
+		user.setName("luna's phone");
+		user.setPhone(phone);
+		return user;
 	}
 
 	@Override

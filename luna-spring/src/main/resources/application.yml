@@ -1,0 +1,9 @@
+luna:
+  user:
+    config: application.yml
+
+  email:
+    user-name: luna@163.com
+
+bean:
+  name: luna

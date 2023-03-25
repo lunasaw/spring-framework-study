@@ -7,6 +7,8 @@ dependencies {
     implementation group: 'io.github.lunasaw', name: 'luna-common', version: '2.3.4'
     implementation(project(":spring-context"))
     implementation("org.aspectj:aspectjweaver")
+    api("org.yaml:snakeyaml")
+
 }
 
 test {
