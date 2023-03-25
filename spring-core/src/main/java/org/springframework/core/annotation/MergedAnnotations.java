@@ -138,6 +138,8 @@ import org.springframework.util.Assert;
 public interface MergedAnnotations extends Iterable<MergedAnnotation<Annotation>> {
 
 	/**
+	 * 确定指定的注释类型是直接存在还是元存在。相当于调用 get(annotationType).isPresent()。
+	 * 参数：annotationType——要检查的注释类型返回：如果存在注释则为真
 	 * Determine if the specified annotation type is either directly present or
 	 * meta-present.
 	 * <p>Equivalent to calling {@code get(annotationType).isPresent()}.
@@ -157,6 +159,7 @@ public interface MergedAnnotations extends Iterable<MergedAnnotation<Annotation>
 	boolean isPresent(String annotationType);
 
 	/**
+	 * 确定指定的注释类型是否直接存在。相当于调用 get(annotationType).isDirectlyPresent()。
 	 * Determine if the specified annotation type is directly present.
 	 * <p>Equivalent to calling {@code get(annotationType).isDirectlyPresent()}.
 	 * @param annotationType the annotation type to check
@@ -444,6 +447,7 @@ public interface MergedAnnotations extends Iterable<MergedAnnotation<Annotation>
 	enum SearchStrategy {
 
 		/**
+		 * 只查找直接声明的注释，不考虑 @Inherited 注释，也不搜索超类或已实现的接口。
 		 * Find only directly declared annotations, without considering
 		 * {@link Inherited @Inherited} annotations and without searching
 		 * superclasses or implemented interfaces.
@@ -451,6 +455,8 @@ public interface MergedAnnotations extends Iterable<MergedAnnotation<Annotation>
 		DIRECT,
 
 		/**
+		 * 查找所有直接声明的注释以及任何 @Inherited 超类注释。此策略仅在与 Class 类型一起使用时才真正有用，
+		 * 因为所有其他带注释的元素都会忽略 @Inherited 注释。此策略不搜索已实现的接口。
 		 * Find all directly declared annotations as well as any
 		 * {@link Inherited @Inherited} superclass annotations.
 		 * <p>This strategy is only really useful when used with {@link Class}

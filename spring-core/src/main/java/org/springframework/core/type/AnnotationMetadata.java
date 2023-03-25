@@ -26,6 +26,10 @@ import org.springframework.core.annotation.MergedAnnotations;
 import org.springframework.core.annotation.MergedAnnotations.SearchStrategy;
 
 /**
+ * AbstractAnnotationMetadataTests
+ * AnnotationMetadataTests
+ * 定义对特定类注释的抽象访问的接口，其形式不需要加载该类。
+ * AnnotationMetadata是一个Java接口，用于获取有关注解的元数据信息。它提供了许多有用的方法，可以用来检查类、方法、字段等上面的注解信息。
  * Interface that defines abstract access to the annotations of a specific
  * class, in a form that does not require that class to be loaded yet.
  *
@@ -41,6 +45,7 @@ import org.springframework.core.annotation.MergedAnnotations.SearchStrategy;
 public interface AnnotationMetadata extends ClassMetadata, AnnotatedTypeMetadata {
 
 	/**
+	 * 获取基础类上存在的所有注释类型的完全限定类名。返回：注解类型名称
 	 * Get the fully qualified class names of all annotation types that
 	 * are <em>present</em> on the underlying class.
 	 * @return the annotation type names
@@ -53,6 +58,7 @@ public interface AnnotationMetadata extends ClassMetadata, AnnotatedTypeMetadata
 	}
 
 	/**
+	 * 获取基础类上给定注释类型上存在的所有元注释类型的完全限定类名。参数：annotationName——要查找的元注释类型的完全限定类名返回：元注释类型名称，如果没有 f 则为空集
 	 * Get the fully qualified class names of all meta-annotation types that
 	 * are <em>present</em> on the given annotation type on the underlying class.
 	 * @param annotationName the fully qualified class name of the meta-annotation
@@ -103,6 +109,7 @@ public interface AnnotationMetadata extends ClassMetadata, AnnotatedTypeMetadata
 	}
 
 	/**
+	 * 检索使用给定注释类型注释（或元注释）的所有方法的方法元数据。
 	 * Retrieve the method metadata for all methods that are annotated
 	 * (or meta-annotated) with the given annotation type.
 	 * <p>For any returned method, {@link MethodMetadata#isAnnotated} will
@@ -117,6 +124,7 @@ public interface AnnotationMetadata extends ClassMetadata, AnnotatedTypeMetadata
 
 
 	/**
+	 * 使用标准反射为给定类创建新的 AnnotationMetadata 实例的工厂方法。
 	 * Factory method to create a new {@link AnnotationMetadata} instance
 	 * for the given class using standard reflection.
 	 * @param type the class to introspect

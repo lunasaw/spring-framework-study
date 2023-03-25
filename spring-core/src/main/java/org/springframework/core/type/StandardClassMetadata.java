@@ -67,6 +67,11 @@ public class StandardClassMetadata implements ClassMetadata {
 
 	@Override
 	public boolean isAnnotation() {
+		/**
+		 * 如果此 Class 对象表示注释类型，则返回 true。请注意，如果此方法返回 true，
+		 * isInterface() 也将返回 true，因为所有注释类型也是接口。返回：
+		 * 如果此类对象表示注释类型，则返回 true； false 否则自：1.5
+		 */
 		return this.introspectedClass.isAnnotation();
 	}
 

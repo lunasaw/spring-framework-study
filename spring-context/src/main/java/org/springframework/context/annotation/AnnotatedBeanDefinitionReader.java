@@ -234,15 +234,18 @@ public class AnnotatedBeanDefinitionReader {
 	}
 
 	/**
-	 * Register a bean from the given bean class, deriving its metadata from
-	 * class-declared annotations.
-	 * @param beanClass the class of the bean
-	 * @param name an explicit name for the bean
+	 * 从给定的 bean 类注册一个 bean，从类声明的注释中派生其元数据。
+	 * 参数：
+	 * @param beanClass the class of the bean  bean名称的类
+	 * @param name an explicit name for the bean   bean的显式名称
 	 * @param qualifiers specific qualifier annotations to consider, if any,
 	 * in addition to qualifiers at the bean class level
+	 *  除了 bean 类级别的限定符之外，要考虑的特定限定符注释（如果有的话）
 	 * @param supplier a callback for creating an instance of the bean
 	 * (may be {@code null})
+	 *  回调函数 可能为空
 	 * @param customizers one or more callbacks for customizing the factory's
+	 *  用于自定义工厂的一个或多个回调
 	 * {@link BeanDefinition}, e.g. setting a lazy-init or primary flag
 	 * @since 5.0
 	 */
@@ -250,6 +253,7 @@ public class AnnotatedBeanDefinitionReader {
 			@Nullable Class<? extends Annotation>[] qualifiers, @Nullable Supplier<T> supplier,
 			@Nullable BeanDefinitionCustomizer[] customizers) {
 
+		// 创建一个通用bean定义信息加载器
 		AnnotatedGenericBeanDefinition abd = new AnnotatedGenericBeanDefinition(beanClass);
 		if (this.conditionEvaluator.shouldSkip(abd.getMetadata())) {
 			return;

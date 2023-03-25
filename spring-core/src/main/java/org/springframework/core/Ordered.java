@@ -56,6 +56,9 @@ public interface Ordered {
 
 
 	/**
+	 * 获取此对象的订单值。较高的值被解释为较低的优先级。因此，
+	 * 具有最低值的对象具有最高优先级（有点类似于 Servlet 启动时加载值）。
+	 * 相同的顺序值将导致受影响对象的任意排序位置。
 	 * Get the order value of this object.
 	 * <p>Higher values are interpreted as lower priority. As a consequence,
 	 * the object with the lowest value has the highest priority (somewhat

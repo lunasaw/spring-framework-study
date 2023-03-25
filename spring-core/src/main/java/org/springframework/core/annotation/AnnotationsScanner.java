@@ -506,6 +506,12 @@ abstract class AnnotationsScanner {
 		}
 	}
 
+	/**
+	 * 类型是否 "java." 开头 或者 Ordered.class
+	 * 只有纯 Java 注解
+	 * @param type
+	 * @return
+	 */
 	static boolean hasPlainJavaAnnotationsOnly(Class<?> type) {
 		return (type.getName().startsWith("java.") || type == Ordered.class);
 	}

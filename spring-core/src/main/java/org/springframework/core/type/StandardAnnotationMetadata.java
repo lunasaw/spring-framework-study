@@ -48,6 +48,9 @@ public class StandardAnnotationMetadata extends StandardClassMetadata implements
 
 	private final MergedAnnotations mergedAnnotations;
 
+	/**
+	 * 是否包装成map返回 AnnotationAttributes
+	 */
 	private final boolean nestedAnnotationsAsMap;
 
 	@Nullable
@@ -66,6 +69,9 @@ public class StandardAnnotationMetadata extends StandardClassMetadata implements
 	}
 
 	/**
+	 * 创建一个标准原数据包装类
+	 * 提供以 {@link org.springframework.core.annotation.AnnotationAttributes}
+	 * 形式返回任何嵌套注释或注释数组的选项，而不是实际的 {@link Annotation} 实例。
 	 * Create a new {@link StandardAnnotationMetadata} wrapper for the given Class,
 	 * providing the option to return any nested annotations or annotation arrays in the
 	 * form of {@link org.springframework.core.annotation.AnnotationAttributes} instead
@@ -148,6 +154,7 @@ public class StandardAnnotationMetadata extends StandardClassMetadata implements
 		Set<MethodMetadata> annotatedMethods = null;
 		if (AnnotationUtils.isCandidateClass(getIntrospectedClass(), annotationName)) {
 			try {
+				// 获取所有方法
 				Method[] methods = ReflectionUtils.getDeclaredMethods(getIntrospectedClass());
 				for (Method method : methods) {
 					if (isAnnotatedMethod(method, annotationName)) {

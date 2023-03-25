@@ -154,6 +154,7 @@ public abstract class AnnotationUtils {
 	}
 
 	/**
+	 * 确定给定的类是否是携带指定注释的候选者（在类型、方法或字段级别）。
 	 * Determine whether the given class is a candidate for carrying the specified annotation
 	 * (at type, method or field level).
 	 * @param clazz the class to introspect
