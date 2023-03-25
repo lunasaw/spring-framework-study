@@ -17,7 +17,7 @@ public class User {
 
 	private Phone phone;
 
-	@Value("${bean.name}")
+	@Value("${luna.user.name}")
 	private String name;
 
 

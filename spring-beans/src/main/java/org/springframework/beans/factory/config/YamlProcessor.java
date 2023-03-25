@@ -151,6 +151,8 @@ public abstract class YamlProcessor {
 	}
 
 	/**
+	 * 为子类提供机会来处理从提供的资源中解析的 Yaml。依次解析每个资源，并根据匹配器检查其中的文档。如果文档匹配，则将其连同其作为属性的表示一起传递到回调中。
+	 * 根据 setResolutionMethod(YamlProcessor.ResolutionMethod) 的不同，并非所有文档都会被解析。
 	 * Provide an opportunity for subclasses to process the Yaml parsed from the supplied
 	 * resources. Each resource is parsed in turn and the documents inside checked against
 	 * the {@link #setDocumentMatchers(DocumentMatcher...) matchers}. If a document
@@ -409,11 +411,13 @@ public abstract class YamlProcessor {
 
 
 	/**
+	 * 用于解析资源的方法。
 	 * Method to use for resolving resources.
 	 */
 	public enum ResolutionMethod {
 
 		/**
+		 * 替换列表前面的值。
 		 * Replace values from earlier in the list.
 		 */
 		OVERRIDE,
@@ -425,6 +429,7 @@ public abstract class YamlProcessor {
 		OVERRIDE_AND_IGNORE,
 
 		/**
+		 * 获取列表中存在的第一个资源并仅使用它。
 		 * Take the first resource in the list that exists and use just that.
 		 */
 		FIRST_FOUND

@@ -70,6 +70,7 @@ public class BeanDefinitionVisitor {
 
 
 	/**
+	 * 遍历给定的 BeanDefinition 对象和其中包含的 MutablePropertyValues 和 ConstructorArgumentValues。参数：beanDefinition——要遍历的BeanDefinition对象
 	 * Traverse the given BeanDefinition object and the MutablePropertyValues
 	 * and ConstructorArgumentValues contained in them.
 	 * @param beanDefinition the BeanDefinition object to traverse

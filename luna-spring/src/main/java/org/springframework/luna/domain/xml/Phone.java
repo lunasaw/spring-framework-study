@@ -2,6 +2,7 @@ package org.springframework.luna.domain.xml;
 
 import lombok.Data;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Component;
  * 2023/3/10
  */
 @Data
-// @Component
+@Component
 public class Phone implements InitializingBean {
+
+	@Value("${luna.phone.number}")
     private String number;
 
     public void init() {

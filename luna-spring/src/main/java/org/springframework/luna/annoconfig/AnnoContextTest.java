@@ -25,5 +25,6 @@ public class AnnoContextTest {
 
 		Email email = (Email) context.getBean("custom_luna_email");
 		System.out.println(JSON.toJSONString(email));
+
 	}
 }
