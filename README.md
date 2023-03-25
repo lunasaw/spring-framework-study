@@ -36,3 +36,9 @@ Follow [@SpringCentral](https://twitter.com/springcentral), [@SpringFramework](h
 ## License
 
 The Spring Framework is released under version 2.0 of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
+
+## doc
+
+1. 执行spring-oxm#task#other.checkstyleJmh
+2. 安装aspectj插件
+3. 编译器使用java11，或者ajc，或者groovy-eclpise
