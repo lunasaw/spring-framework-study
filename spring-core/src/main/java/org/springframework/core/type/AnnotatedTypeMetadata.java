@@ -46,6 +46,7 @@ import org.springframework.util.MultiValueMap;
 public interface AnnotatedTypeMetadata {
 
 	/**
+	 * 根据底层元素的直接注释返回注释细节。返回：基于直接注释的合并注释
 	 * Return annotation details based on the direct annotations of the
 	 * underlying element.
 	 * @return merged annotations based on the direct annotations
@@ -54,6 +55,7 @@ public interface AnnotatedTypeMetadata {
 	MergedAnnotations getAnnotations();
 
 	/**
+	 * 确定底层元素是否具有定义给定类型的注释或元注释。
 	 * Determine whether the underlying element has an annotation or meta-annotation
 	 * of the given type defined.
 	 * <p>If this method returns {@code true}, then
@@ -107,6 +109,7 @@ public interface AnnotatedTypeMetadata {
 	}
 
 	/**
+	 * 返回指定注解的所有属性配置map
 	 * Retrieve all attributes of all annotations of the given type, if any (i.e. if
 	 * defined on the underlying element, as direct annotation or meta-annotation).
 	 * Note that this variant does <i>not</i> take attribute overrides into account.

@@ -37,4 +37,8 @@
 	<context:component-scan base-package="org.springframework.luna.domain.xml"
 							name-generator="org.springframework.luna.componentscan.MyCustomBeanNameGenerator"/>
 
+	<bean class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages"/>
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
 </beans>

@@ -364,6 +364,7 @@ public interface MergedAnnotation<A extends Annotation> {
 	<E extends Enum<E>> E[] getEnumArray(String attributeName, Class<E> type) throws NoSuchElementException;
 
 	/**
+	 * 从注释中获取所需的注释属性值。
 	 * Get a required annotation attribute value from the annotation.
 	 * @param attributeName the attribute name
 	 * @param type the annotation type
@@ -441,6 +442,7 @@ public interface MergedAnnotation<A extends Annotation> {
 	MergedAnnotation<A> filterAttributes(Predicate<String> predicate);
 
 	/**
+	 * 创建公开非合并属性值的注释的新视图。
 	 * Create a new view of the annotation that exposes non-merged attribute values.
 	 * <p>Methods from this view will return attribute values with only alias mirroring
 	 * rules applied. Aliases to {@link #getMetaSource() meta-source} attributes will

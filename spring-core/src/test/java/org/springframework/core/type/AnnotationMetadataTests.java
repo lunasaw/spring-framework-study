@@ -28,15 +28,19 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.core.annotation.AnnotationAttributes;
+import org.springframework.core.annotation.MergedAnnotation;
+import org.springframework.core.annotation.MergedAnnotations;
 import org.springframework.core.testfixture.stereotype.Component;
 import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.core.type.classreading.MetadataReaderFactory;
 import org.springframework.core.type.classreading.SimpleMetadataReaderFactory;
+import org.springframework.util.MultiValueMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -54,7 +58,13 @@ class AnnotationMetadataTests {
 
 	@Test
 	void standardAnnotationMetadata() {
+		// 接受一个类
 		AnnotationMetadata metadata = AnnotationMetadata.introspect(AnnotatedComponent.class);
+		Set<String> annotationTypes = metadata.getAnnotationTypes();
+		System.out.println(annotationTypes);
+		MergedAnnotations annotations = metadata.getAnnotations();
+		MergedAnnotation<Component> annotation = annotations.get(Component.class);
+		annotations.stream().forEach(e-> System.out.println(e.getType().getName()));
 		doTestAnnotationInfo(metadata);
 		doTestMethodAnnotationInfo(metadata);
 	}

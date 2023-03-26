@@ -76,6 +76,7 @@ public abstract class MessageSourceSupport {
 	}
 
 	/**
+	 * 返回是否始终应用 MessageFormat 规则，甚至解析没有参数的消息。
 	 * Return whether to always apply the {@code MessageFormat} rules, parsing even
 	 * messages without arguments.
 	 */
