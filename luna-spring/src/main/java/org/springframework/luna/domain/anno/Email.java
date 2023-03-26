@@ -1,8 +1,10 @@
 package org.springframework.luna.domain.anno;
 
 import lombok.Data;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.support.DefaultPropertySourceFactory;
 import org.springframework.luna.properties.YamlPropertySourceFactory;
@@ -20,6 +22,7 @@ import javax.annotation.PropertyKey;
  * spring 读取yaml 需要配合 YamlPropertySourceFactory {@See PropertySourceAnnotationTests}
  */
 @PropertySource(value = "classpath:application.yml", factory = YamlPropertySourceFactory.class)
+@PropertySource(value = "classpath:application-prod.yml", factory = YamlPropertySourceFactory.class)
 @PropertySource(value = "classpath:application.properties")
 @PropertySource({
 		"classpath:persistence-${serve.active}.properties"
@@ -38,6 +41,8 @@ public class Email implements InitializingBean {
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		System.out.println("初始化后执行 InitializingBean");
+		System.out.println("Email初始化后执行 InitializingBean");
 	}
+
+
 }

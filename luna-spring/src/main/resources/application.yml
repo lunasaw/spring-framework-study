@@ -2,6 +2,7 @@ luna:
   user:
     config: application.yml
     name: luna's name yml
+    address: 浙江杭州
   email:
     user-name: luna@163.com
   phone:

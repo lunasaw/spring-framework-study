@@ -39,6 +39,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.util.ClassUtils;
 
 /**
+ * 实用程序类，允许方便地注册常见的 BeanPostProcessor BeanFactoryPostProcessor
  * Utility class that allows for convenient registration of common
  * {@link org.springframework.beans.factory.config.BeanPostProcessor} and
  * {@link org.springframework.beans.factory.config.BeanFactoryPostProcessor}

@@ -20,5 +20,7 @@ public class MyResourceLoader {
 
         Resource resource = resourceLoader.getResource(location);
         Assert.isTrue(resource.exists(), "file exists false");
+
+		
     }
 }

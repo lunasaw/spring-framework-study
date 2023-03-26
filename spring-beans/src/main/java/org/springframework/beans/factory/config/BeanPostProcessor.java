@@ -79,6 +79,10 @@ public interface BeanPostProcessor {
 	}
 
 	/**
+	 * 任何 bean 初始化回调（如 InitializingBean 的 {@code afterPropertiesSet} 或自定义初始化方法）。
+	 * 该 bean 将已经填充了属性值。返回的 bean 实例可能是原始实例的包装器。
+	 * <p>在 FactoryBean 的情况下，将为 FactoryBean 实例和由 FactoryBean 创建的对象（从 Spring 2.0 开始）调用此回调。
+	 * 后处理器可以通过相应的 {@code bean instanceof FactoryBean} 检查来决定是否应用于 FactoryBean 或创建的对象或两者。 <p>此回调也将在短路触发后调用
 	 * Apply this {@code BeanPostProcessor} to the given new bean instance <i>after</i> any bean
 	 * initialization callbacks (like InitializingBean's {@code afterPropertiesSet}
 	 * or a custom init-method). The bean will already be populated with property values.
