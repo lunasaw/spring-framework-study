@@ -72,6 +72,9 @@ import java.util.Map;
 public interface ConfigurableEnvironment extends Environment, ConfigurablePropertyResolver {
 
 	/**
+	 * 指定为此Environment激活的配置文件集。配置文件在容器引导期间进行评估，以确定是否应向容器注册 bean 定义。
+	 * 任何现有的活动配置文件都将替换为给定的参数；使用零参数调用以清除当前的活动配置文件集。
+	 * 使用addActiveProfile添加一个配置文件，同时保留现有的配置文件集。
 	 * Specify the set of profiles active for this {@code Environment}. Profiles are
 	 * evaluated during container bootstrap to determine whether bean definitions
 	 * should be registered with the container.

@@ -23,14 +23,7 @@ import java.security.PrivilegedAction;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.EmbeddedValueResolver;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.ApplicationEventPublisherAware;
-import org.springframework.context.ApplicationStartupAware;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.EmbeddedValueResolverAware;
-import org.springframework.context.EnvironmentAware;
-import org.springframework.context.MessageSourceAware;
-import org.springframework.context.ResourceLoaderAware;
+import org.springframework.context.*;
 import org.springframework.lang.Nullable;
 import org.springframework.util.StringValueResolver;
 
@@ -126,6 +119,8 @@ class ApplicationContextAwareProcessor implements BeanPostProcessor {
 		}
 		if (bean instanceof ApplicationContextAware) {
 			((ApplicationContextAware) bean).setApplicationContext(this.applicationContext);
+		} if (bean instanceof LyaAware){
+			((LyaAware) bean).setLunaContext();
 		}
 	}
 

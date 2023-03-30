@@ -5,6 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.Resource;
+import org.springframework.luna.aware.AwareConfig;
 import org.springframework.luna.domain.Address;
 import org.springframework.luna.domain.anno.Email;
 import org.springframework.luna.messages.MessageSourceConfig;
@@ -25,7 +26,7 @@ public class AnnoContextTest {
     public static void main(String[] args) throws IOException {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.register(CustomConfig.class);
-        context.register(MessageSourceConfig.class);
+        context.register(MessageSourceConfig.class, AwareConfig.class);
         context.refresh();
         Address address = (Address)context.getBean("address");
 		System.out.println(JSON.toJSONString(address));

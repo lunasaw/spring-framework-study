@@ -120,6 +120,9 @@ import org.springframework.lang.Nullable;
 public interface BeanFactory {
 
 	/**
+	 * 用于取消引用 FactoryBean 实例并将其与 FactoryBean 创建的 bean 区分开来。
+	 * 例如，如果名为 myJndiObject 的 bean 是一个 FactoryBean，
+	 * 那么获取 &myJndiObject 将返回工厂，而不是工厂返回的实例。
 	 * Used to dereference a {@link FactoryBean} instance and distinguish it from
 	 * beans <i>created</i> by the FactoryBean. For example, if the bean named
 	 * {@code myJndiObject} is a FactoryBean, getting {@code &myJndiObject}

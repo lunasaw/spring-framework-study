@@ -36,6 +36,12 @@ import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 
 /**
+ * 基于 JDK dynamic proxies代理的 Spring AOP 框架的基于 JDK 的AopProxy实现。
+ * 创建一个动态代理，实现 AopProxy 公开的接口。动态代理不能用于代理定义在类中的方法，而不是接口。
+ * 这种类型的对象应该通过代理工厂获得，由AdvisedSupport类配置。此类是 Spring 的 AOP 框架的内部类，不需要由客户端代码直接使用。
+ * 如果底层（目标）类是线程安全的，则使用此类创建的代理将是线程安全的。
+ * 只要所有 Advisors（包括 Advices 和 Pointcuts）和 TargetSource 都是可序列化的，代理就是可序列化的。
+ * 也可以看看
  * JDK-based {@link AopProxy} implementation for the Spring AOP framework,
  * based on JDK {@link java.lang.reflect.Proxy dynamic proxies}.
  *

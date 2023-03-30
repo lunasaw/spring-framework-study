@@ -57,6 +57,9 @@ public class BeanDefinitionTest {
         System.out.println(JSON.toJSON(definitionNames));
 
 		Address address = beanFactory.getBean(Address.class);
+
+		beanFactory.preInstantiateSingletons();
+
 	}
 
 }
